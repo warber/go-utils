@@ -88,6 +88,11 @@ func (s *StageHandler) CreateStage(project string, stageName string) (*models.Ev
 	return postWithEventContext(s.Scheme+"://"+s.BaseURL+"/v1/project/"+project+"/stage", body, s)
 }
 
+// DeleteStage deletes the new stage with the provided name
+func (s *StageHandler) DeleteStage(project string, stageName string) (*models.EventContext, *models.Error) {
+	return deleteWithEventContext(s.Scheme+"://"+s.BaseURL+"/v1/project/"+project+"/stage/"+stageName, s)
+}
+
 // GetAllStages returns a list of all stages.
 func (s *StageHandler) GetAllStages(project string) ([]*models.Stage, error) {
 
